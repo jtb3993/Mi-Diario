@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#f8fafc" />
+    <title>Spanish Journal</title>
+
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="icon" href="./icons/logo.png" />
+
+    <link rel="stylesheet" href="./styles.css" />
+
+    <!-- Local libs (no CDN). Part 2 will wire these into Stats and Export/Import. -->
+    <script defer src="./lib/chart.umd.js"></script>
+    <script defer src="./lib/jszip.min.js"></script>
+  </head>
+
+  <body>
+    <noscript>
+      <div class="banner banner-error">
+        This app needs JavaScript to run
+      </div>
+    </noscript>
+
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="appmark" aria-hidden="true"></div>
+        <div class="topbar-title">
+          <div class="topbar-name">Spanish Journal</div>
+          <div class="topbar-sub" id="topbarSub">Offline</div>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <button class="btn btn-ghost" id="btnToday" type="button" aria-label="Go to today">
+          <span class="icon" aria-hidden="true" data-icon="today"></span>
+        </button>
+      </div>
+    </header>
+
+    <div id="bannerHost" class="banner-host" aria-live="polite"></div>
+
+    <main id="app" class="app" role="main" aria-label="Spanish journal app">
+      <!-- UI mounts here -->
+    </main>
+
+    <nav class="tabbar" aria-label="Bottom navigation">
+      <button class="tab" id="tabHome" type="button" data-tab="home">
+        <span class="icon" aria-hidden="true" data-icon="home"></span>
+        <span class="label">Home</span>
+      </button>
+
+      <button class="tab" id="tabNew" type="button" data-tab="new">
+        <span class="icon" aria-hidden="true" data-icon="plus"></span>
+        <span class="label">New</span>
+      </button>
+
+      <button class="tab" id="tabStats" type="button" data-tab="stats">
+        <span class="icon" aria-hidden="true" data-icon="chart"></span>
+        <span class="label">Stats</span>
+      </button>
+
+      <button class="tab" id="tabMistakes" type="button" data-tab="mistakes">
+        <span class="icon" aria-hidden="true" data-icon="alert"></span>
+        <span class="label">Mistakes</span>
+      </button>
+
+      <button class="tab" id="tabSettings" type="button" data-tab="settings">
+        <span class="icon" aria-hidden="true" data-icon="gear"></span>
+        <span class="label">Settings</span>
+      </button>
+    </nav>
+
+    <!-- Install prompt helper (optional, no onboarding) -->
+    <div class="installbar" id="installBar" hidden>
+      <div class="installbar-text">
+        Install this app for offline journalling
+      </div>
+      <button class="btn btn-primary" id="btnInstall" type="button">Install</button>
+      <button class="btn btn-ghost" id="btnInstallDismiss" type="button">Not now</button>
+    </div>
+
+    <!-- Modal host -->
+    <div class="modal-backdrop" id="modalBackdrop" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-head">
+          <div class="modal-title" id="modalTitle">Confirm</div>
+          <button class="btn btn-ghost" id="modalClose" type="button" aria-label="Close">
+            <span class="icon" aria-hidden="true" data-icon="close"></span>
+          </button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+        <div class="modal-actions" id="modalActions"></div>
+      </div>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
